@@ -85,7 +85,6 @@ static void setup_shared_ram_perms(u32 client_id, phys_addr_t addr, u32 size)
 	int dest_vmids[2] = {VMID_HLOS, VMID_MSS_MSA};
 	int dest_perms[2] = {PERM_READ|PERM_WRITE,
 			     PERM_READ|PERM_WRITE};
-
 	if (client_id != MPSS_RMTS_CLIENT_ID)
 		return;
 

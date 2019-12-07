@@ -83,7 +83,7 @@ static int pppolac_recv_core(struct sock *sk_udp, struct sk_buff *skb)
 
 	/* Put it back if it is a control packet. */
 	if (skb->data[sizeof(struct udphdr)] & L2TP_CONTROL_BIT)
-		return opt->backlog_rcv(sk_udp, skb);
+	    return opt->backlog_rcv(sk_udp, skb);
 
 	/* Skip UDP header. */
 	skb_pull(skb, sizeof(struct udphdr));
@@ -190,6 +190,7 @@ drop:
 
 static int pppolac_recv(struct sock *sk_udp, struct sk_buff *skb)
 {
+	//modify for Qcom temp CR, VPN can't connect internet a few mins later
 	sock_hold(sk_udp);
 	sk_receive_skb(sk_udp, skb, 0);
 	return 0;
